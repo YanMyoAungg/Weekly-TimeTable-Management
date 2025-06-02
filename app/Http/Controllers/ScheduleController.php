@@ -13,7 +13,7 @@ class ScheduleController extends Controller
      */
     public function index()
     {
-        return Inertia::render('dashboard');
+        return Schedule::with(['subject', 'teacher'])->get();
     }
 
     /**
@@ -23,7 +23,7 @@ class ScheduleController extends Controller
     {
         $data = $request->validate([
             'day_of_week' => 'required|in:Mon,Tue,Wed,Thu,Fri,Sat',
-            'time_slot_id' => 'required|exists:time_slots,id',
+            'timeslot_id' => 'required|exists:timeslots,id',
             'subject_id' => 'nullable|exists:subjects,id',
             'teacher_id' => 'nullable|exists:teachers,id',
             'is_break' => 'required|boolean',

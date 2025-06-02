@@ -12,7 +12,7 @@ class TimeSlotController extends Controller
      */
     public function index()
     {
-        //
+        return TimeSlot::all()->toJson();
     }
 
     /**
